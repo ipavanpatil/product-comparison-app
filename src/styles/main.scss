@@ -1,0 +1,411 @@
+@use "sass:color";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import "bootstrap/dist/css/bootstrap.min.css";
+
+// Variables
+$primary-color: #0d6efd;
+$secondary-color: #6c757d;
+$success-color: #198754;
+$danger-color: #dc3545;
+$warning-color: #ffc107;
+$info-color: #0dcaf0;
+$light-color: #f8f9fa;
+$dark-color: #212529;
+
+$transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-fast: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-slow: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+
+$shadow-sm: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+$shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+$shadow-lg: 0 1rem 3rem rgba(0, 0, 0, 0.175);
+
+// Animations
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
+  }
+  100% {
+    background-position: calc(200px + 100%) 0;
+  }
+}
+
+// Global Styles
+body {
+  font-family: "Poppins", Arial, sans-serif;
+}
+
+// Navbar Styles
+.navbar {
+  backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.95) !important;
+  transition: $transition-base;
+
+  &.scrolled {
+    box-shadow: $shadow;
+  }
+}
+
+.brand-icon-wrapper {
+  background: linear-gradient(
+    135deg,
+    $primary-color,
+    color.adjust($primary-color, $lightness: 20%)
+  );
+  border-radius: 12px;
+  padding: 8px;
+  transition: $transition-base;
+
+  &:hover {
+    transform: rotate(5deg) scale(1.1);
+    box-shadow: $shadow;
+  }
+}
+
+.brand-icon {
+  color: white;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.brand-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  background: linear-gradient(
+    135deg,
+    $primary-color,
+    color.adjust($primary-color, $lightness: -20%)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1.2;
+}
+
+.brand-tagline {
+  font-size: 0.75rem;
+  color: $secondary-color;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.mobile-menu-icon {
+  transition: $transition-fast;
+
+  &:hover {
+    transform: scale(1.1);
+    color: $primary-color;
+  }
+}
+
+.nav-link-custom {
+  position: relative;
+  font-weight: 500;
+  transition: $transition-base;
+  border-radius: 8px;
+  margin: 0 4px;
+
+  &:hover {
+    color: $primary-color !important;
+    background-color: rgba($primary-color, 0.1);
+    transform: translateY(-2px);
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(
+      90deg,
+      $primary-color,
+      color.adjust($primary-color, $lightness: 20%)
+    );
+    transition: $transition-base;
+    transform: translateX(-50%);
+  }
+
+  &:hover::after {
+    width: 80%;
+  }
+}
+
+.btn-cta {
+  background: linear-gradient(
+    135deg,
+    $primary-color,
+    color.adjust($primary-color, $lightness: -10%)
+  );
+  border: none;
+  border-radius: 25px;
+  padding: 10px 24px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: $transition-base;
+  box-shadow: $shadow-sm;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow;
+    background: linear-gradient(
+      135deg,
+      color.adjust($primary-color, $lightness: -5%),
+      color.adjust($primary-color, $lightness: -15%)
+    );
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+}
+
+// Product Card Animations
+.product-card {
+  transition: $transition-base;
+  border: 1px solid #e9ecef;
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  animation: fadeInUp 0.6s ease-out;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(255, 255, 255, 0.4),
+      transparent
+    );
+    transition: $transition-slow;
+    z-index: 1;
+  }
+
+  &:hover {
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: $shadow-lg;
+    border-color: rgba($primary-color, 0.3);
+
+    &::before {
+      left: 100%;
+    }
+  }
+
+  .product-image {
+    height: 200px;
+    object-fit: cover;
+    transition: $transition-base;
+
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+
+  .card-body {
+    position: relative;
+    z-index: 2;
+  }
+}
+
+// Staggered animation for product grid
+.product-grid-item {
+  animation: fadeInUp 0.6s ease-out;
+
+  @for $i from 1 through 12 {
+    &:nth-child(#{$i}) {
+      animation-delay: #{$i * 0.1}s;
+    }
+  }
+}
+
+// Feature icons animation
+.feature-icon {
+  transition: $transition-fast;
+
+  &:hover {
+    color: $primary-color;
+    transform: scale(1.2);
+  }
+}
+
+// Button animations
+.btn-compare {
+  transition: $transition-base;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    transition: $transition-base;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover::before {
+    width: 300px;
+    height: 300px;
+  }
+
+  &:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+
+    &:hover {
+      transform: none;
+    }
+  }
+
+  &:not(:disabled):hover {
+    transform: translateY(-2px);
+    box-shadow: $shadow;
+  }
+}
+
+// Comparison panel animations
+.comparison-panel {
+  animation: fadeInScale 0.3s ease-out;
+}
+
+.comparison-content {
+  animation: slideInRight 0.4s ease-out;
+}
+
+// Comparison toggle animations
+.comparison-toggle {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 1040;
+  max-width: 350px;
+  animation: slideInRight 0.5s ease-out;
+
+  .card {
+    backdrop-filter: blur(10px);
+    background-color: rgba(255, 255, 255, 0.95);
+    border: none;
+    box-shadow: $shadow-lg;
+    transition: $transition-base;
+
+    &:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.2);
+    }
+  }
+}
+
+// Loading shimmer effect
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e0e0e0 50%, #f0f0f0 75%);
+  background-size: 200px 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+// Search bar enhancements
+.form-control,
+.form-select {
+  transition: $transition-base;
+  border-radius: 12px;
+
+  &:focus {
+    transform: translateY(-2px);
+    box-shadow: $shadow, 0 0 0 0.2rem rgba($primary-color, 0.25);
+  }
+}
+
+// Highlight animations
+.highlight-best {
+  background-color: #d1e7dd !important;
+  color: #0f5132 !important;
+  font-weight: 600;
+  animation: pulse 2s infinite;
+}
+
+// Responsive adjustments
+@media (max-width: 768px) {
+  .comparison-toggle {
+    bottom: 1rem;
+    right: 1rem;
+    left: 1rem;
+    max-width: none;
+  }
+
+  .product-card {
+    &:hover {
+      transform: translateY(-4px) scale(1.01);
+    }
+  }
+
+  .nav-link-custom {
+    animation: slideInRight 0.3s ease-out;
+    animation-fill-mode: both;
+  }
+}
+
+// Utility classes
+.fade-in {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.slide-in {
+  animation: slideInRight 0.5s ease-out;
+}
+
+.scale-in {
+  animation: fadeInScale 0.4s ease-out;
+}
