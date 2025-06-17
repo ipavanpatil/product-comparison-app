@@ -9,6 +9,7 @@ import { products } from "./data/products";
 import { Product } from "./types/Product";
 import { useLocalStorage } from "./hooks/useLocalStorage";
 
+
 function App() {
   const [selectedProducts, setSelectedProducts] = useLocalStorage<Product[]>(
     "selectedProducts",
@@ -62,7 +63,7 @@ function App() {
   };
 
   return (
-    <div className="min-vh-100 bg-light">
+    <div className="min-vh-100">
       {/* Navigation */}
       <Navbar />
 
@@ -72,14 +73,14 @@ function App() {
           <div className="row align-items-center py-4">
             <div className="col-12 col-lg-8 mx-auto text-center">
               <div className="hero-content fade-in">
-                <h1 className="display-4 fw-bold text-dark mb-3">
+                <h1 className="display-4 fw-bold mb-3">
                   Compare Premium Laptops
                 </h1>
-                <p className="lead text-muted mb-4">
+                <p className="lead mb-4">
                   Select up to 3 laptops to compare their specifications side by
                   side and make the perfect choice for your needs
                 </p>
-                <div className="d-flex align-items-center justify-content-center text-muted mb-4">
+                <div className="d-flex align-items-center justify-content-center mb-4">
                   <ShoppingCart size={20} className="me-2" />
                   <span className="fw-medium">
                     {selectedProducts.length} laptop
@@ -108,8 +109,8 @@ function App() {
             {filteredProducts.length === 0 ? (
               <div className="text-center py-5">
                 <div className="mx-auto fade-in" style={{ maxWidth: "400px" }}>
-                  <Laptop size={64} className="text-muted mb-3" />
-                  <h3 className="h5 fw-semibold text-dark mb-2">
+                  <Laptop size={64} className="mb-3" />
+                  <h3 className="h5 fw-semibold mb-2">
                     No laptops found
                   </h3>
                   <p className="text-muted">
@@ -168,6 +169,8 @@ function App() {
           </div>
         </div>
       )}
+
+     
     </div>
   );
 }

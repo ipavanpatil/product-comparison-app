@@ -41,7 +41,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           alt={product.name}
           className="card-img-top product-image"
         />
-        <span className="position-absolute top-0 end-0 m-3 badge bg-light text-dark">
+        <span className="position-absolute top-0 end-0 m-3 badge bg-light ">
           {product.category}
         </span>
       </div>
@@ -68,8 +68,8 @@ export const ProductCard: React.FC<ProductCardProps> = ({
               <div className="me-2">
                 {getFeatureIcon(key)}
               </div>
-              <span className="text-muted text-capitalize me-2">{key}:</span>
-              <span className="fw-medium text-dark">{value}</span>
+              <span className="text-capitalize me-2">{key}:</span>
+              <span className="fw-medium ">{value}</span>
             </div>
           ))}
         </div>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Laptop, Menu, X, Home, Search, BarChart3, Info, Phone } from 'lucide-react';
+import { ThemeToggle } from "./ThemeToggle";
 
 export const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -71,6 +72,11 @@ export const Navbar: React.FC = () => {
               Start Comparing
             </button>
           </div>
+
+           <div className='ms-lg-2 mt-3 mt-lg-0'>
+            {/* Theme Toggle Button */}
+           <ThemeToggle />
+           </div>
         </div>
       </div>
     </nav>

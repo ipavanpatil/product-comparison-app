@@ -78,6 +78,112 @@ body {
   font-family: "Poppins", Arial, sans-serif;
 }
 
+// --- THEME OVERRIDES ---
+
+body.theme-light {
+  background: #f8f9fa;
+  color: #212529;
+}
+
+body.theme-dark {
+  background: #181a1b;
+  color: #f8f9fa;
+}
+
+// Navbar
+body.theme-dark .navbar {
+  background-color: rgba(33, 37, 41, 0.95) !important;
+  color: #f8f9fa;
+}
+
+body.theme-dark .navbar .nav-link,
+body.theme-dark .navbar .navbar-brand {
+  color: #f8f9fa !important;
+}
+
+// Cards (product, comparison, etc.)
+body.theme-dark .card,
+body.theme-dark .comparison-toggle .card {
+  background-color: #23272b !important;
+  color: #f8f9fa;
+  border-color: #23272b;
+}
+
+// Modals
+body.theme-dark .modal-content {
+  background: #23272b;
+  color: #f8f9fa;
+}
+
+body.theme-dark .modal-header {
+  background: linear-gradient(
+    90deg,
+    #23272b 0%,
+    color.adjust($primary-color, $lightness: -20%) 100%
+  );
+  color: #f8f9fa;
+}
+
+// Buttons
+body.theme-dark .btn,
+body.theme-dark .btn-cta,
+body.theme-dark .btn-compare {
+  background: color.adjust($primary-color, $lightness: -20%);
+  color: #f8f9fa;
+  border-color: color.adjust($primary-color, $lightness: -20%);
+}
+
+body.theme-dark .btn-outline-secondary {
+  background: transparent;
+  color: #f8f9fa;
+  border-color: #f8f9fa;
+}
+
+// Inputs
+body.theme-dark .form-control,
+body.theme-dark .form-select {
+  background: #23272b;
+  color: #f8f9fa;
+  border-color: #343a40;
+}
+
+// Shimmer
+body.theme-dark .shimmer {
+  background: linear-gradient(90deg, #23272b 25%, #343a40 50%, #23272b 75%);
+}
+
+// Highlight
+body.theme-dark .highlight-best {
+  background-color: #2d4739 !important;
+  color: #b6f2d8 !important;
+}
+
+// Feature icon
+body.theme-dark .feature-icon {
+  color: #f8f9fa;
+}
+
+// Brand icon wrapper
+body.theme-dark .brand-icon-wrapper {
+  background: linear-gradient(
+    135deg,
+    color.adjust($primary-color, $lightness: -20%),
+    color.adjust($primary-color, $lightness: 0%)
+  );
+}
+
+// Brand name
+body.theme-dark .brand-name {
+  background: linear-gradient(
+    135deg,
+    color.adjust($primary-color, $lightness: 0%),
+    color.adjust($primary-color, $lightness: -40%)
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
 // Navbar Styles
 .navbar {
   backdrop-filter: blur(10px);

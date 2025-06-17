@@ -167,7 +167,7 @@ export const ComparisonPanel: React.FC<ComparisonPanelProps> = ({
                   <tr key={feature}>
                     <td>
                       <div className="d-flex align-items-center">
-                        <span className="text-muted me-2">
+                        <span className="me-2">
                           {getFeatureIcon(feature)}
                         </span>
                         <span className="fw-medium text-capitalize">
