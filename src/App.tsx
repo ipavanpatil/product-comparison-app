@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from "react";
-import { Laptop, ShoppingCart } from "lucide-react";
+import { Laptop, ShoppingCart, Search, Filter } from "lucide-react";
 import { Navbar } from "./components/Navbar";
 import { ProductGrid } from "./components/ProductGrid";
 import { ComparisonPanel } from "./components/ComparisonPanel";
@@ -170,7 +170,11 @@ function App() {
         </div>
       )}
 
-     
+      {/* Search and Filter Icons */}
+      <div className="position-relative">
+        <Search className="position-absolute top-50 start-0 translate-middle-y search-icon" size={20} />
+        <Filter className="position-absolute top-50 end-0 translate-middle-y filter-icon" size={20} />
+      </div>
     </div>
   );
 }

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Plus, Check, Star, Cpu, HardDrive, Monitor, Battery, Weight, Zap } from 'lucide-react';
 import { Product } from '../types/Product';
 
@@ -15,9 +15,15 @@ export const ProductCard: React.FC<ProductCardProps> = ({
   onToggleCompare,
   canAddMore
 }) => {
+  const [showAlert, setShowAlert] = useState(false);
+
   const handleToggleCompare = () => {
     if (isSelected || canAddMore) {
       onToggleCompare(product);
+      if (!isSelected) {
+        setShowAlert(true);
+        setTimeout(() => setShowAlert(false), 1500);
+      }
     }
   };
 
@@ -41,7 +47,7 @@ export const ProductCard: React.FC<ProductCardProps> = ({
           alt={product.name}
           className="card-img-top product-image"
         />
-        <span className="position-absolute top-0 end-0 m-3 badge bg-light ">
+        <span className="position-absolute top-0 end-0 m-3 badge bg-light text-muted">
           {product.category}
         </span>
       </div>
@@ -73,6 +79,13 @@ export const ProductCard: React.FC<ProductCardProps> = ({
             </div>
           ))}
         </div>
+
+        {/* Bootstrap Alert */}
+        {showAlert && (
+          <div className="alert alert-success py-2 px-3 mb-3" role="alert">
+            <strong>{product.name}</strong> added to compare!
+          </div>
+        )}
         
         <button
           onClick={handleToggleCompare}
